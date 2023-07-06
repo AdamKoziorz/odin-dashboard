@@ -10,7 +10,9 @@
     --clr-header-text: white;
 
     --clr-card-background: white;
-    --clr-card-accent: rgb(40, 134, 59);
+    --clr-card-accent: rgb(49, 184, 76);
+
+    --clr-update-divider: black;
 
   }
 
@@ -18,17 +20,19 @@ html, body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--clr-main-background);
     overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
 }
 
 html, body, ul, h1, h2 {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .page-container {
     display: grid;
     gap: 20px;
-    grid-template: max-content calc(100vh) / max-content minmax(600px, 1fr);
+    grid-template: max-content calc(100vh) / max-content minmax(980px, 1fr);
 }
 
 .sidebar-container {
@@ -79,22 +83,21 @@ html, body, ul, h1, h2 {
     color: var(--clr-sidebar-text-hover);
 }
 
-
-
 .header-container {
     top: 20px;
-    padding: 30px;
+    padding: 20px 50px;
     background-color: var(--clr-header-background);
     border-radius: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.075);
     display: flex;
-    align-items: start;
+    align-items: center;
     justify-content: space-between;
     position: sticky;
 }
 
 .header-container .actions {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 20px;
 }
@@ -104,9 +107,56 @@ html, body, ul, h1, h2 {
     list-style-type: none;
 }
 
-.header-container .actions a {
+.header-container .actions a, .header-container .navigation .profile {
     color: var(--clr-header-text);
+    font-size: 1.2rem;
     text-decoration: none;
+}
+
+.header-container .navigation {
+    color: var(--clr-header-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.header-container input:not(:focus):placeholder-shown {
+    border: none;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    transition: width 0.4s ease-in-out;
+    background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>magnify</title><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>');
+    background-position: 12.5px center;
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+}
+
+.header-container input,
+.header-container input:focus,
+.header-container input:focus:not(:placeholder-shown) {
+    border: none;
+    outline: none;
+    height: 50px;
+    transition: width 0.4s ease-in-out;
+    border-radius: 25px;
+    width: 400px;
+    padding: 15px 25px;
+    font-size: 1rem;
+}
+
+.header-container .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-container .profile img {
+    width: 50px;
+    height: auto;
+    border-radius: 25px;
 }
 
 .main {
@@ -114,7 +164,7 @@ html, body, ul, h1, h2 {
     gap: 60px;
     grid-area: 2 / 2 / 4 / 4;
     grid-template: max-content / 1fr 300px;
-    padding: 0px 40px;
+    padding: 0px 40px 60px 40px;
 }
 
 .main .posts {
@@ -126,10 +176,10 @@ html, body, ul, h1, h2 {
 }
 
 .title {
-    font-size: 22px;
+    font-size: 1.5rem;
     font-weight: 400;
     grid-column: 1 / -1;
-    margin: 35px 30px 15px 30px;
+    margin: 35px 30px 15px 0px;
     justify-self: start;
 }
 
@@ -148,6 +198,47 @@ html, body, ul, h1, h2 {
     max-width: 80%;
     height: 200px;
     margin: 0px auto;
+}
+
+.card p {
+    align-self: flex-start;
+}
+
+.card-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-links img {
+    width: 30px;
+    height: auto;
+}
+
+.main .updates {
+    display: grid;
+    gap: 20px 15px;
+    grid-template-rows: max-content;
+    grid-template-columns: 1fr;
+}
+
+.main .update-list {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.075);
+    display: grid;
+    gap: 25px 30px;
+    grid-template-rows: max-content;
+    padding: 30px;
+    box-sizing: border-box;
+    align-self: start;
+}
+
+.main .update-list .divider {
+    background-color: var(--clr-update-divider);
+    height: 1px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 #home {
