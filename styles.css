@@ -328,15 +328,24 @@ html, body, ul, h1, h2 {
    to work on for me
 */
 @media (max-width: 600px) {
-    body {
-        transform: scale(0.1);
-        transform-origin: 0 0;
-    }  
- }
+    .sidebar-container-wrapper, .header-container, .main .updates {
+        display: none;
+    }
 
- @media (max-width: 1000px) {
-    body {
-        transform: scale(0.5);
-        transform-origin: 0 0;
-    }  
+    .main {
+        padding: 0px;
+        grid-template: max-content / 0px;
+    }
+
+    .main .posts {
+        width: 100%;
+    }
+
+    .title {
+        justify-self: start;
+    }
+
+    .card p {
+        font-size: 0.7rem;
+    }
  }
